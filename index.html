@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/calc.css">
+    <title>Simple Calculator</title>
+</head>
+
+<body onload="calc()">
+    <div class="calculator">
+        <div class="calcname">the.<span>frontend</span>.guy</div>
+        <div class="calculator-shine"></div>
+        <!-- <div id="smallscreen" class="screen small">0</div> -->
+        <div id="screen" class="screen">0</div>
+         <div class="row">
+            <input type="button" value="C" class="btn memory C" />
+            <input type="button" value="MC" class="btn memory Mclear" />
+            <input type="button" value="M" class="btn memory M" />
+            <input type="button" value="M+" class="btn memory Mplus" />
+        </div>
+        <div class="row">
+            <input type="button" value="7" class="btn number 7" />
+            <input type="button" value="8" class="btn number 8" />
+            <input type="button" value="9" class="btn number 9" />
+            <input type="button" value="/" class="btn operator divide" />
+        </div>
+        <div class="row">
+            <input type="button" value="4" class="btn number 4" />
+            <input type="button" value="5" class="btn number 5" />
+            <input type="button" value="6" class="btn number 6" />
+            <input type="button" value="*" class="btn operator multiply" />
+        </div>
+        <div class="row">
+            <input type="button" value="1" class="btn number 1" />
+            <input type="button" value="2" class="btn number 2" />
+            <input type="button" value="3" class="btn number 3" />
+            <input type="button" value="-" class="btn operator subtract" />
+        </div>
+        <div class="row">
+            <input type="button" value="0" class="btn number 0" />
+            <input type="button" value="." class="btn number dot" />
+            <input type="button" value="=" class="btn result" />
+            <input type="button" value="+" class="btn operator plus" />
+        </div>
+    </div>
+</body>
+<script src="calc.js"></script>
+
+</html>

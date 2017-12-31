@@ -1,0 +1,192 @@
+$calc_boxshadow: rgb(0,0,0);
+$calc_border_radius_1_top: 150px;
+$calc_border_radius_2_top: 30px;
+$calc_border_radius_1_bottom: 180px;
+$calc_border_radius_2_bottom: 90px;
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    background: url(../img/wood_texture.jpg) #222;
+    background-size: cover;
+    background-position: center;
+    
+    display: flex;
+    justify-content: center;
+}
+@media (min-width: 600px) {
+    body > .calculator {
+        width: 500px;
+        box-sizing: initial;
+    }
+}
+.calculator {
+    transform: rotate(-1deg);
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(100deg, #000 0%, #333 50%, #222 50%, #000 100%);    
+    flex-basis: 300px;
+    width: 290px;
+    padding: 30px 30px 80px 30px;
+    box-shadow: inset 10px 3px 7px 5px rgba($calc_boxshadow, .35),
+                inset 0px 10px 7px 0px rgba($calc_boxshadow, .005),
+                inset 0px -10px 7px 0px rgba($calc_boxshadow, .4),
+                inset -10px 0px 7px 0px rgba($calc_boxshadow, .45),
+                inset -3px -8px 3px 3px rgba($calc_boxshadow, .45),
+                inset 0px 0px 2px 4px rgba($calc_boxshadow, .55),
+                      9px 9px 25px 3px rgba($calc_boxshadow, .65),
+                      0px 0px 20px 5px rgba($calc_boxshadow, .75);
+    box-sizing: border-box;
+    border-top-left-radius: $calc_border_radius_1_top $calc_border_radius_2_top; 
+    border-top-right-radius: $calc_border_radius_1_top $calc_border_radius_2_top;
+    border-bottom-left-radius: $calc_border_radius_1_bottom $calc_border_radius_2_bottom; 
+    border-bottom-right-radius: $calc_border_radius_1_bottom $calc_border_radius_2_bottom;
+
+    position: relative;
+    overflow: hidden;
+    & .screen {
+        flex-basis: 45px;
+        border: 2px solid white;
+        border-radius: 5px;
+        box-sizing: border-box;
+        box-shadow: inset 1px 1px 2px 1px #333;
+        background: linear-gradient(#484848, #616161);
+        margin-bottom: 20px;
+        
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        font-size: 20px;
+        padding: 0 10px;
+        color: white;
+        
+        overflow: hidden;
+        position: relative;
+        & .screen-shine {
+            background: rgba(255,255,255,.15);
+            box-shadow: 0 0 2px rgba(255,255,255,.15);
+            width: 350px;
+            height: 300px;
+            position: absolute;
+            top: -50px;
+            left: -155px;
+            transform: rotate(10deg);
+            animation: 2s screen-shineMove ease-in-out infinite;
+            &:after {
+                z-index: 1;
+                background: rgba(255,255,255,.95);
+                box-shadow: 0 0 2px rgba(255,255,255,1);
+                width: 350px;
+                height: 300px;
+                position: absolute;
+                top: -50px;
+                left: -155px;
+                transform: rotate(10deg);
+                animation: 4s screen-shineMove ease infinite;
+            }
+        }
+        @keyframes screen-shineMove {
+            from {left: -155px; opacity: 0;};
+            50% {opacity: 1;};
+            to {left: 2400px; opacity: 0;};
+        }
+    }
+    & .screen.small {
+        font-size: 14px;
+        flex-basis: 28px;
+        margin-bottom: 10px;
+        background: linear-gradient(#222, #333);
+        text-shadow: 1px 1px 2px #444, 0 0 0 #222, -1px -1px 2px #555;
+    }
+    & .row {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        & input {
+            cursor: pointer;
+            color: rgba(white, .95);
+            z-index: 1;
+            opacity: .9;
+            text-shadow: 1px 1px 3px #222, 0 0 3px rgba(0,0,0,.2), -1px -1px 3px #333;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 7px;
+            min-height: 40px;
+            display: flex;
+            background: linear-gradient(180deg, #777, #555);
+            border-radius: 4px;
+            font-size: 30px;
+            font-weight: bold;
+            
+            box-shadow: 1px 1px 2px 2px rgba($calc_boxshadow, .65), 
+                        -1px -1px 2px 2px rgba($calc_boxshadow, .75),
+                        inset 2px 2px 2px 1px rgba($calc_boxshadow, .045),
+                        inset -2px -2px 2px 1px rgba($calc_boxshadow,.035);
+            &:hover {
+                background: linear-gradient(180deg, #666, #444);
+
+            }
+            &:focus {
+                outline: 0;
+            }
+            &:active, {
+                background: linear-gradient(180deg, #444, #666);
+                transform: scale(.98,.98);              
+            }
+            &.result {
+                font-weight: bold;
+                background: linear-gradient(orangered, red);
+                &:hover {
+                    background: linear-gradient(darken(orangered, 3), darken(red, 3));
+                }
+                &:active {
+                    background: linear-gradient(darken(red, 3), darken(orangered, 3));
+                }
+            }
+            &.divide,
+            &.multiply,
+            &.subtract,
+            &.memory,
+            &.operator {
+                font-weight: bold;
+                background: linear-gradient(#444, #222);
+                &:hover {
+                    background: linear-gradient(darken(#444, 9), darken(#222, 9));
+                }
+                &:active {
+                    background: linear-gradient(darken(#222, 9), darken(#444, 9));
+                }
+            }
+            &.memory,
+            &.operator {
+                font-size: 18px;
+            }
+        }
+    }
+    & .calcname {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 6px;
+        flex: 1;
+        align-self: center;
+        font-size: 18px;
+        opacity: .9;
+        color: rgb(230,230,230);
+        top: 70px;
+        text-shadow: 1px 1px 1px #000, 0 0 0 #000, -1px -1px 1px #111;
+        & span {
+            font-weight: bold;
+        }
+    }
+}
